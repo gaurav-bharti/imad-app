@@ -18,6 +18,19 @@ var articleOne = {
 	</p>`
 };
 
+var articleTwo = {
+	title: 'Article Two',
+	heading: 'Article Two',
+	date: 'Aug 09, 2017',
+	content: `
+	<p>
+	Paragraph one... Blah Blah Blah
+	</p>
+	<p>
+	Paragraph Two... Blah Blah Blah
+	</p>`
+};
+
 function createTemplate(data) {
     var title = data.title;
     var heading = data.heading;
@@ -54,8 +67,12 @@ function createTemplate(data) {
 	return htmlTemplate;
 }
 
-app.get('/articleOne.html', function (req, res) {
+app.get('/article-one.html', function (req, res) {
   res.send(createTemplate(articleOne));
+});
+
+app.get('/article-two.html', function (req, res) {
+  res.send(createTemplate(articleOTwo));
 });
 
 app.get('/', function (req, res) {
