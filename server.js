@@ -17,6 +17,7 @@ var articles = {
 	<p>
 	Paragraph Two... Blah Blah Blah
 	</p>`},
+
     'article-two': {title: 'Article Two',
 	heading: 'Article Two',
 	date: 'Aug 09, 2017',
@@ -27,10 +28,6 @@ var articles = {
 	<p>
 	Paragraph Two... Blah Blah Blah
 	</p>`}
-};
-
-var articleTwo = {
-	
 };
 
 function createTemplate(data) {
@@ -70,11 +67,23 @@ function createTemplate(data) {
 	return htmlTemplate;
 }
 
+var names=[];
+app.get('/submit-name/:name', function (req, res) {
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
+var counter=0;
+app.get('/counter', function (req, res) {
+    counter += 1;
+  res.send(counter.toString());
+});
+
 app.get('/:articleName', function (req, res) {
     var articleName = req.params.articleName;
   res.send(createTemplate(articles[articleName]));
 });
-
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -82,6 +91,10 @@ app.get('/', function (req, res) {
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+});
+
+app.get('/ui/main.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
 app.get('/ui/madi.png', function (req, res) {
