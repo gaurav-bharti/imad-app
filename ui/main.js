@@ -15,7 +15,7 @@ button.onClick = function() {
 
 request.open('GET', 'http://http://gauravbharti4991.imad.hasura-app.io/counter', true);
 request.send(null);
-}
+};
 
 submit.onClick = function() {
     var request = new XMLHttpRequest();
@@ -38,4 +38,4 @@ submit.onClick = function() {
 
 request.open('GET', 'http://http://gauravbharti4991.imad.hasura-app.io/submit-name?name='+name, true);
 request.send(null);
-}
+};
