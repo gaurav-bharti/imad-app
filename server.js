@@ -22,72 +22,10 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-var articles = {
-    'article-one': {title: 'Article One',
-	heading: 'Article One',
-	date: 'Aug 08, 2017',
-	content: `
-	<p>
-	Paragraph one... Blah Blah Blah
-	</p>
-	<p>
-	Paragraph Two... Blah Blah Blah
-	</p>`},
-
-    'article-two': {title: 'Article Two',
-	heading: 'Article Two',
-	date: 'Aug 09, 2017',
-	content: `
-	<p>
-	Paragraph one... Blah Blah Blah
-	</p>
-	<p>
-	Paragraph Two... Blah Blah Blah
-	</p>`}
-};
-
-function createTemplate(data) {
-    var title = data.title;
-    var heading = data.heading;
-    var date = data.date;
-    var content = data.content;
-    
-    var htmlTemplate = `<htmp>
-	<head>
-		<title>
-			${title}
-		</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link href="/ui/style.css" rel="stylesheet" />
-	</head>
-	<body>
-		<div class="container">
-			<div>
-				<a href="/">Home</a>
-			</div>
-			<hr/>
-			<h3>
-				${heading}
-			</h3>
-			<div>
-				${date}
-			</div>
-			<div>
-				${content}
-			</div>
-		</div>
-	</body>
-</html>
-	</body>`;
-	
-	return htmlTemplate;
-}
 
 
-app.get('/:articleName', function (req, res) {
-    var articleName = req.params.articleName;
-  res.send(createTemplate(articles[articleName]));
-});
+
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
