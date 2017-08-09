@@ -1,6 +1,6 @@
 console.log('Loaded!');
 
-var button = dcument.getElementById('counter');
+var button = document.getElementById('counter');
 button.onClick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -30,7 +30,7 @@ submit.onClick = function() {
 			for(var i=0; i<names.length; i++) {
 			    list += '<li>'+names[i]+'</li>';
 			}
-			var ul = documnet.getElementById('namelist');
+			var ul = document.getElementById('namelist');
 			ul.innerHTML = list;
 		}
 	}
