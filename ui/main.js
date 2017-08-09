@@ -20,9 +20,10 @@ request.send(null);
 var submitB = document.getElementById("submit");
 submitB.onclick = function() {
     var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-    var nameInput = document.getElementById("name");
+	var nameInput = document.getElementById("name");
     var name = nameInput.value;
+    request.onreadystatechange = function() {
+    
 	if(request.readyState === XMLHttpRequest.DONE) {
 		if(request.status === 200) {
 			var names = request.responseText;
