@@ -13,7 +13,7 @@ button.onClick = function() {
 	}
 };
 
-request.open('GET', 'http://http://gauravbharti4991.imad.hasura-app.io/counter', true);
+request.open('GET', 'http://gauravbharti4991.imad.hasura-app.io/counter', true);
 request.send(null);
 };
 
