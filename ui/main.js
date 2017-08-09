@@ -14,7 +14,7 @@ button.onClick = function() {
 };
 
 request.open("GET", "http://gauravbharti4991.imad.hasura-app.io/counter", true);
-request.send();
+request.send(null);
 };
 
 var submitB = document.getElementById("submit");
@@ -38,5 +38,5 @@ submitB.onClick = function() {
 };
 
 request.open("GET", "http://gauravbharti4991.imad.hasura-app.io/submit-name?name="+name, true);
-request.send();
+request.send(null);
 };
