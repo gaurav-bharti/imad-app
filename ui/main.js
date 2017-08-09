@@ -21,7 +21,7 @@ var submitB = document.getElementById("submit");
 submitB.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
-    var nameInput = documnet.getElementById("name");
+    var nameInput = document.getElementById("name");
     var name = nameInput.value;
 	if(request.readyState === XMLHttpRequest.DONE) {
 		if(request.status === 200) {
