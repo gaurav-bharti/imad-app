@@ -1,7 +1,7 @@
 console.log('Loaded!');
 
 var button = document.getElementById("counter");
-button.onClick = function() {
+button.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
 	if(request.readyState === XMLHttpRequest.DONE) {
@@ -18,7 +18,7 @@ request.send(null);
 };
 
 var submitB = document.getElementById("submit");
-submitB.onClick = function() {
+submitB.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
     var nameInput = documnet.getElementById("name");
