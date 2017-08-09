@@ -17,8 +17,8 @@ request.open("GET", "http://gauravbharti4991.imad.hasura-app.io/counter", true);
 request.send(null);
 };
 
-
-submit.onclick = function() {
+var submitB = document.getElementById("submit");
+submitB.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
     var nameInput = document.getElementById("name");
