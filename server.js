@@ -42,30 +42,6 @@ app.get('/ui/main.js', function (req, res) {
 
 
 
-var articles = {
-    'article-one': {title: 'Article One',
-	heading: 'Article One',
-	date: 'Aug 08, 2017',
-	content: `
-	<p>
-	Paragraph one... Blah Blah Blah
-	</p>
-	<p>
-	Paragraph Two... Blah Blah Blah
-	</p>`},
-
-    'article-two': {title: 'Article Two',
-	heading: 'Article Two',
-	date: 'Aug 09, 2017',
-	content: `
-	<p>
-	Paragraph one... Blah Blah Blah
-	</p>
-	<p>
-	Paragraph Two... Blah Blah Blah
-	</p>`}
-};
-
 function createTemplate(data) {
     var title = data.title;
     var heading = data.heading;
@@ -90,7 +66,7 @@ function createTemplate(data) {
 				${heading}
 			</h3>
 			<div>
-				${date}
+				${date.toDateString()}
 			</div>
 			<div>
 				${content}
@@ -106,7 +82,7 @@ function createTemplate(data) {
 app.get('/articles/:articleName', function (req, res) {
     var articleName = req.params.articleName;
     
-    pool.query("SELECT * FROM article where title = '"+req.params.articleName+"'", function(err, result) {
+    pool.query("SELECT * FROM article where title = $1", [req.params.articleName], function(err, result) {
         if(err) {
           res.status(500).send(err.toString());
       } else {
