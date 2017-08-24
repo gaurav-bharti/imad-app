@@ -9,7 +9,7 @@ function loadLoginForm () {
         <input type="submit" id="register_btn" value="Register" />
         `;
     document.getElementById('login_area').innerHTML = loginHtml;
-    
+}   
     // Submit username/password to login
     var submit = document.getElementById('login_btn');
     submit.onclick = function () {
@@ -21,7 +21,7 @@ function loadLoginForm () {
           if (request.readyState === XMLHttpRequest.DONE) {
               // Take some action
               if (request.status === 200) {
-                  submit.value = 'Sucess!';
+                  submit.value = 'Success!';
               } else if (request.status === 403) {
                   submit.value = 'Invalid credentials. Try again?';
               } else if (request.status === 500) {
@@ -78,7 +78,7 @@ function loadLoginForm () {
         register.value = 'Registering...';
     
     };
-}
+//}
 
 function loadLoggedInUser (username) {
     var loginArea = document.getElementById('login_area');
