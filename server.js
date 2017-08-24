@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 
 var crypto = require('crypto');
-var Pool = require('pg').Pool;
+var pool = require('pg').Pool;
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
@@ -23,19 +23,6 @@ app.use(session({
 	cookie: {maxAge: 1000 * 60 * 60 * 24* 30}
 }));
 
-var names=[];
-app.get('/submit-name', function (req, res) {
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
-
-var counter=0;
-app.get('/counter', function (req, res) {
-    counter += 1;
-  res.send(counter.toString());
-});
-
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
@@ -44,6 +31,7 @@ function hash(input, salt) {
 	var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, sha512);
 	return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
+
 app.get('/hash/:input', function (req, res) {
     var hashedString = hash(req.params.input, salt);
     res.send(hashedString);
