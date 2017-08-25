@@ -78,6 +78,27 @@ function hash (input, salt) {
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
 
+app.get('/test1/:input', function(req, res) {
+    var username = req.params.input;
+    pool.query('SELECT * FROM test1 WHERE username = $1', [username], function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send(JSON.stringify(result.rows));
+      }
+   });
+});
+
+app.get('/test2/:input', function(req, res) {
+   var username = req.params.input;
+    pool.query("SELECT * FROM test2 WHERE username = "+username, function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          res.send(JSON.stringify(result.rows));
+      }
+   });
+});
 
 app.get('/hash/:input', function(req, res) {
    var hashedString = hash(req.params.input, 'this-is-some-random-string');
