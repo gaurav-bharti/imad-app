@@ -91,7 +91,7 @@ app.get('/test1/:input', function(req, res) {
 
 app.get('/test2/:input', function(req, res) {
    var username = req.params.input;
-    pool.query("SELECT * FROM test2 WHERE username = '"+{username}+"'", function (err, result) {
+    pool.query("SELECT * FROM test2 WHERE username = '"+$username+"'", function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
       } else {
